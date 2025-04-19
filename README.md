@@ -1,4 +1,11 @@
-# macos-custom-script
+<h1 align="center">MacOS Custom Script</h1>
+<h3 align="center">A collection of scripts to make your life easier on MacOS as a developer.</h3>
+
+<br />
+
+Deployed link: <https://scripts.devarif.me>
+
+## Table of contents
 
 - Port share
   - [doc](./port-share.md)

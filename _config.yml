@@ -1,0 +1,7 @@
+# remote_theme: "dracula/gh-pages"
+remote_theme: pages-themes/hacker@v0.2.0
+title: MacOS Custom Script
+description: A collection of scripts to make your life easier on MacOS as a developer.
+author: Md Arif Hossain
+email: devarif.me@gmail.com
+url: https://devarif.me
