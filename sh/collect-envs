@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Define the target directory
+TARGET_DIR="$HOME/Desktop/envs"
+
+# Create the target directory if it doesn't exist
+mkdir -p "$TARGET_DIR"
+
+echo "🔍 Scanning filesystem for .env* files. This may take a while..."
+
+# Find and process .env* files
+sudo find / -type f -name ".env*" 2>/dev/null | while read file; do
+  # Remove leading slash
+  relative_path="${file#/}"
+
+  # Get folder path and env file name
+  folder_path="$(dirname "$relative_path")"
+  env_name="$(basename "$file")"
+
+  # Replace slashes with dots and remove leading dot from filename
+  new_name="${folder_path//\//.}.${env_name#.}"
+
+  # Full destination path
+  dest="$TARGET_DIR/$new_name"
+
+  # Copy the file (overwrite if exists)
+  cp -f "$file" "$dest"
+done
+
+echo "✅ All .env* files copied to: $TARGET_DIR"

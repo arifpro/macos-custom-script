@@ -1,0 +1,12 @@
+#!/bin/bash
+username="arifpro"
+server="srv.us"
+port_args=""
+
+# Process arguments
+for port in "$@"; do
+    port_args="$port_args -R ${port}:localhost:${port}"
+done
+
+# Run the SSH command
+ssh "${username}@${server}" $port_args
