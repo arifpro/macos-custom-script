@@ -1,0 +1,20 @@
+#!/bin/bash
+PEM_FILE="$HOME/Documents/ec2/devarif/devarif-instance-1.pem"
+INSTANCE_USER="ubuntu"
+INSTANCE_IP="ec2-15-206-67-164.ap-south-1.compute.amazonaws.com"
+
+# Check if the PEM file exists
+if [ ! -f "$PEM_FILE" ]; then
+    echo "❌ Error: PEM file not found at $PEM_FILE"
+    exit 1
+fi
+
+# Check if the instance user and IP are set
+if [ -z "$INSTANCE_USER" ] || [ -z "$INSTANCE_IP" ]; then
+    echo "❌ Error: Instance user or IP not set"
+    exit 1
+fi
+
+# Connect to the EC2 instance
+echo "🔌 Connecting to EC2 instance at $INSTANCE_IP..."
+ssh -i "$PEM_FILE" "$INSTANCE_USER@$INSTANCE_IP" || { echo "❌ Connection failed"; exit 1; }
